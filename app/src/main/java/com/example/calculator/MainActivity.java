@@ -111,13 +111,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("+");
+                    info.setText("");
+                    info.setHint("+");
                     calculate = "plus";
                 }
                 if (!result.getText().equals("")) {
                     info.setText(result.getText().toString());
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("+");
+                    info.setText("");
+                    info.setHint("+");
                     calculate = "plus";
                 }
             }
@@ -127,13 +129,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("-");
+                    info.setText("");
+                    info.setHint("-");
                     calculate = "subtract";
                 }
                 if (!result.getText().equals("")) {
                     info.setText(result.getText().toString());
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("-");
+                    info.setText("");
+                    info.setHint("-");
                     calculate = "subtract";
                 }
             }
@@ -143,13 +147,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("X");
+                    info.setText("");
+                    info.setHint("x");
                     calculate = "product";
                 }
                 if (!result.getText().equals("")) {
                     info.setText(result.getText().toString());
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("x");
+                    info.setText("");
+                    info.setHint("x");
                     calculate = "product";
                 }
             }
@@ -159,24 +165,35 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("/");
+                    info.setText("");
+                    info.setHint("/");
                     calculate = "divide";
                 }
                 if (!result.getText().equals("")) {
                     info.setText(result.getText().toString());
                     firstNumber = Float.parseFloat(info.getText().toString());
-                    info.setText("/");
+                    info.setText("");
+                    info.setHint("/");
                     calculate = "divide";
                 }
             }
         });
         btnSign.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-
+                info.setText(info.getText().toString() + "-");
+            }
+        });
+        btnComma.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                info.setText(info.getText() + ".");
             }
         });
         btnPercent.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
@@ -191,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!info.getText().equals("")) {
-                    secondNumber = Float.parseFloat(info.getText().toString().substring(1));
+                    secondNumber = Float.parseFloat(info.getText().toString());
                     switch (calculate) {
                         case "plus": {
                             res = (int) (firstNumber + secondNumber);
